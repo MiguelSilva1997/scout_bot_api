@@ -14,6 +14,11 @@ gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 
 gem 'active_model_serializers', '~> 0.10.0'
+
+gem 'omniauth-google-oauth2'
+
+gem 'factory_bot_rails'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -30,6 +35,11 @@ gem 'active_model_serializers', '~> 0.10.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'capybara'
+  gem 'rspec-rails'
+  gem 'launchy'
+  gem 'pry'
+  gem 'database_cleaner'
 end
 
 group :development do
