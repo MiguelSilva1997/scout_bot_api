@@ -1,24 +1,18 @@
 Rails.application.routes.draw do
 
   resources :sessions, only:[:create, :destroy]
-  resources :events
+  resources :events, only: [:index, :show]
+  resources :news
+
+  resources :users
 
   namespace :api do
     namespace :v1 do
+        resources :players
 
-      namespace :players do
-        resources :users
-      end
+        resources :teams
 
-      namespace :scouts do
-        resources :users
-      end
-
-      namespace :teams do
-        resources :users
-        resources :events, only: [:new, :create]
-      end
-
+        resources :scouts
     end
   end
 end
