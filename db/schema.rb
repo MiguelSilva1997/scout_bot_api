@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171208212426) do
+ActiveRecord::Schema.define(version: 20171210045249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "player_profiles", force: :cascade do |t|
+    t.string "club"
+    t.string "height"
+    t.string "weight"
+    t.string "dominant_foot"
+    t.string "age"
+    t.string "country"
+    t.string "primary_position"
+    t.string "secondary_position"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_player_profiles_on_user_id"
+  end
+
+  create_table "scout_profiles", force: :cascade do |t|
+    t.string "country"
+    t.integer "reputation"
+    t.boolean "availability", default: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_scout_profiles_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
@@ -21,7 +46,6 @@ ActiveRecord::Schema.define(version: 20171208212426) do
     t.string "email"
     t.string "password_digest"
     t.string "phone_number"
-    t.string "country"
     t.string "type"
     t.integer "role", default: 0
     t.datetime "created_at", null: false
