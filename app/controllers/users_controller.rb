@@ -1,10 +1,7 @@
 class UsersController < ApplicationController
 
-  def new
-    #code
+  def index
+    render json: User.find(current_user.id)
   end
 
-  def create
-    #code
-  end
 end
