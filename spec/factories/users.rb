@@ -2,9 +2,9 @@ FactoryBot.define do
   factory :user do
     first_name "MyString"
     last_name "MyString"
-    email "MyString"
-    password_digest "MyString"
+    email "test"
+    password_digest "password"
     phone_number "MyString"
-    country "MyString"
+    role 0
   end
 end

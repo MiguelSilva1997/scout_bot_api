@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171210045249) do
+ActiveRecord::Schema.define(version: 20171224032603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,16 +40,32 @@ ActiveRecord::Schema.define(version: 20171210045249) do
     t.index ["user_id"], name: "index_scout_profiles_on_user_id"
   end
 
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.string "reputation"
+    t.string "country"
+    t.string "league"
+    t.integer "division"
+  end
+
+  create_table "user_teams", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "team_id"
+    t.index ["team_id"], name: "index_user_teams_on_team_id"
+    t.index ["user_id"], name: "index_user_teams_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
     t.string "password_digest"
     t.string "phone_number"
-    t.string "type"
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "user_teams", "teams"
+  add_foreign_key "user_teams", "users"
 end
