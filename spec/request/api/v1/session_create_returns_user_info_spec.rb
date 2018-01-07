@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Session Create", type: :request do
+RSpec.describe "Session Create" do
   describe "POST session/create" do
     it "returns the user info" do
       user = create(:user, role: 0)
@@ -8,7 +8,7 @@ RSpec.describe "Session Create", type: :request do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      get "/users"
+      get "/api/v1/users/#{user.id}"
 
       user = JSON.parse(response.body, symbolize_names: true)
 

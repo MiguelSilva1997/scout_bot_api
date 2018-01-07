@@ -6,17 +6,21 @@ Rails.application.routes.draw do
 
 
   resources :events, only: [:index, :show]
+
   resources :news
 
-  resources :users
 
   namespace :api do
     namespace :v1 do
-        resources :players
+      resources :users
 
-        resources :teams
+      resources :player_profiles
 
-        resources :scouts
+      resources :teams do
+        resources :events, only: [:new, :create]
+      end
+
+      resources :scout_profiles
     end
   end
 end

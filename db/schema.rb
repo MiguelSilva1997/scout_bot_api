@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(version: 20171224032603) do
 
   create_table "player_profiles", force: :cascade do |t|
     t.string "club"
-    t.string "height"
-    t.string "weight"
+    t.integer "height"
+    t.integer "weight"
     t.string "dominant_foot"
-    t.string "age"
+    t.integer "age"
     t.string "country"
     t.string "primary_position"
     t.string "secondary_position"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20171224032603) do
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
-    t.string "reputation"
+    t.integer "reputation"
     t.string "country"
     t.string "league"
     t.integer "division"
