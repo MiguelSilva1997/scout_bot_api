@@ -9,7 +9,8 @@ class CreatePlayerProfiles < ActiveRecord::Migration[5.1]
       t.string :country
       t.string :primary_position
       t.string :secondary_position
-      t.belongs_to :user, index: true
+      t.integer :rating
+      t.belongs_to :user, index: { unique: true }, foreign_key: true
 
       t.timestamps
     end

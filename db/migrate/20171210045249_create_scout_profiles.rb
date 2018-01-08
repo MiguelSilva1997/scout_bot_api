@@ -4,7 +4,7 @@ class CreateScoutProfiles < ActiveRecord::Migration[5.1]
       t.string :country
       t.integer :reputation
       t.boolean :availability, :default => false
-      t.belongs_to :user, index: true
+      t.belongs_to :user, index: { unique: true }, foreign_key: true
 
       t.timestamps
     end

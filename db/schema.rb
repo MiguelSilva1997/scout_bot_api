@@ -24,10 +24,11 @@ ActiveRecord::Schema.define(version: 20171224032603) do
     t.string "country"
     t.string "primary_position"
     t.string "secondary_position"
+    t.integer "rating"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_player_profiles_on_user_id"
+    t.index ["user_id"], name: "index_player_profiles_on_user_id", unique: true
   end
 
   create_table "scout_profiles", force: :cascade do |t|
@@ -37,7 +38,7 @@ ActiveRecord::Schema.define(version: 20171224032603) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_scout_profiles_on_user_id"
+    t.index ["user_id"], name: "index_scout_profiles_on_user_id", unique: true
   end
 
   create_table "teams", force: :cascade do |t|
@@ -66,6 +67,8 @@ ActiveRecord::Schema.define(version: 20171224032603) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "player_profiles", "users"
+  add_foreign_key "scout_profiles", "users"
   add_foreign_key "user_teams", "teams"
   add_foreign_key "user_teams", "users"
 end
