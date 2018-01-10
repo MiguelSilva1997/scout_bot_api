@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-
   root to:'api/v1/main#index'
   namespace :api do
     namespace :v1 do
-
-
       resources :events, only: [:index, :show]
 
       resources :news

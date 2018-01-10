@@ -1,12 +1,23 @@
 class Api::V1::SessionsController < ApplicationController
 
   def create
-    user = User.find_by(email: params[:session][:email])
-    if user && user.password_digest == (params[:session][:password])
-      session[:user_id] = user.id
-      render json: user
+    if params['provider']
+      if user = User.find_by(uid: params["uid"])
+        user.token = params["credentials"]["token"]
+        user.save
+        render json: user
+      else
+        user = User.from_omniauth(params)
+        render json: user
+      end
     else
-      flash[:notice] = "Your username or password is incorrect."
+      user = User.find_by(email: params[:session][:email])
+      if user && user.password_digest == (params[:session][:password])
+        session[:user_id] = user.id
+        render json: user
+      else
+        flash[:notice] = "Your username or password is incorrect."
+      end
     end
   end
 

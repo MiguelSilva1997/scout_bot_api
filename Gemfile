@@ -15,8 +15,6 @@ gem 'puma', '~> 3.7'
 
 gem 'active_model_serializers', '~> 0.10.0'
 
-gem 'omniauth-google-oauth2'
-
 gem 'factory_bot_rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -25,6 +23,8 @@ gem 'factory_bot_rails'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+
+gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
