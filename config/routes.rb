@@ -4,7 +4,6 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :events, only: [:index, :show]
 
-      resources :news
 
       post "/login", to: "sessions#create"
       delete "/logout", to: 'session#destroy'

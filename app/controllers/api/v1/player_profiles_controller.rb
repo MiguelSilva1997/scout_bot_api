@@ -1,4 +1,4 @@
-class Api::V1::PlayerProfiles < ApplicationController
+class Api::V1::PlayerProfilesController < ApplicationController
 
   def index
 
